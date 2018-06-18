@@ -50,45 +50,6 @@ func getDbConn() (db *sql.DB){
 }
 
 
-/* For Non DB- insert
-func newUserId() int64 {
-	return atomic.AddInt64(&lastID, 1)
-}
-
-
-func addUser(user *models.User) error {
-	if user == nil {
-		return errors.New(500, "user must be present")
-	}
-
-	userLock.Lock()
-	defer userLock.Unlock()
-
-	newID := newUserId()
-	user.ID = newID
-	usersList[newID] = user
-
-	return nil
-}
-*/
-
-/*
-func updateItem(id int64, user *models.User) error {
-	if user == nil {
-		return errors.New(500, "item must be present")
-	}
-	userLock.Lock()
-	defer userLock.Unlock()
-
-	_, exists := usersList[id]
-	if !exists {
-		return errors.NotFound("not found: item %d", id)
-	}
-
-	user.ID = id
-	usersList[id] = user
-	return nil
-} */
 
 func updateItem(id int64, user *models.User) error {
 	if user == nil {
@@ -111,19 +72,6 @@ func updateItem(id int64, user *models.User) error {
 }
 
 
-/* func deleteItem(id int64) error {
-	userLock.Lock()
-	defer userLock.Unlock()
-
-	fmt.Println(id)
-	_, exists := usersList[id]
-	if !exists {
-		return errors.NotFound("not found: item %d", id)
-	}
-
-	delete(usersList, id)
-	return nil
-} */
 
 func deleteItem(id int64) error {
 
@@ -189,16 +137,6 @@ func getSingleUser(id int64) (result *models.User, err error) {
 	return getSingleUserDB(id)
 }
 
-/*
-func getSingleUser(id int64) (result *models.User, err error) {
-
-	_, exists := usersList[id]
-	if !exists {
-		return nil, errors.NotFound("User not found %d",id);
-	}
-	result = usersList[id]
-	return result,nil
-}*/
 
 // end of code to add and delete users
 
