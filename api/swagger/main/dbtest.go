@@ -1,5 +1,6 @@
 package main
 
+// DB Unit Test File
 import (
 	_ "fmt"
 	_ "github.com/lib/pq"
